@@ -37,8 +37,8 @@ const BioCard = styled.i`
 	grid-area: image;
 	margin: auto;
 	${ArtistCard}:hover & {
-    display: block;
-  }
+		display: block;
+	}
 `;
 
 const ArtistName = styled.div`
@@ -67,33 +67,38 @@ const Bio = styled.div`
 `;
 
 class ProfileCard extends Component {
-	constructor(props){
+	constructor(props) {
 		super(props);
-		this.state = {isToggleOn: true};
+		this.state = { isToggleOn: true };
 		this.handleClick = this.handleClick.bind(this);
-
 	}
 
- handleClick() {
-    this.setState(prevState => ({
+	handleClick() {
+		this.setState(prevState => ({
 			isToggleOn: !prevState.isToggleOn
-    }));
-  }
+		}));
+	}
 	render() {
 		const isToggleOn = this.state.isToggleOn;
 		let display;
 
 		if (isToggleOn) {
-			display = <div>
-				<ArtistImage {...this.props} className="artist-image">
-					<BioCard className="bio-button far fa-id-card"/>
-				</ArtistImage>
-				<ArtistName className="artist-name">{this.props.name}</ArtistName>
-				<ArtistTitle className="artist-title">{this.props.title}</ArtistTitle>
-			</div>;
-		}else {
-			display = <div><Bio>{this.props.bio}</Bio>
-								<a href={this.props.link}>{this.props.link}</a></div>;
+			display = (
+				<div>
+					<ArtistImage {...this.props} className="artist-image">
+						<BioCard className="bio-button far fa-id-card" />
+					</ArtistImage>
+					<ArtistName className="artist-name">{this.props.name}</ArtistName>
+					<ArtistTitle className="artist-title">{this.props.title}</ArtistTitle>
+				</div>
+			);
+		} else {
+			display = (
+				<div>
+					<Bio>{this.props.bio}</Bio>
+					<a href={this.props.link}>{this.props.link}</a>
+				</div>
+			);
 		}
 
 		return (
